@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+  {% block title%}
+ {{varTitle}}
+  {%endblock title%}
+
+{% block content %}
+
+
+
+</br>
+</br>
+</br>
+</br>
+
+<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+
+     <div class="col-sm-5 col-sm-offset-2">
+        <div class="panel panel-success">
+            <div class="panel-heading">CREATE TEAM</div>
+            <table class="table">
+                <!-- TABLE -->
+                <td>
+
+
+                    <tr>
+                        <td>code</td>
+                        <td>
+                            <input id="id_code" class="form-control" maxlength="100" name="code" type="text" value="{{instance.code}}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>
+                            <input id="id_name" class="form-control" maxlength="100" name="name" type="text" value="{{instance.name}}">
+                        </td>
+                    </tr>
+
+
+
+                </td>
+            </table>
+        </div>
+     </div>
+
+
+
+
+    <div class="col-sm-5 col-sm-offset-2">
+                <td><input type="submit" class="btn btn-danger" value="Save Record" /> </td>
+                <td><a class="btn btn-md btn-info" role="button" href="{% url 'profiler:team_list'%}">View List</a></td>
+    </div>
+
+
+
+                <!--<a href="http://127.0.0.1:8000/marriage/profilelist/">Go to List</a> |-->
+                <!--<a href="http://127.0.0.1:8000/marriage/createprofiles/">New Record</a>-->
+            </table>
+
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+{% load staticfiles %}
+<script src="{% static 'js/jquery3.1.1.js'%}"></script>
+{% endblock content %}

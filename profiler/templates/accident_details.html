@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+
+</head>
+<body>
+<br>
+<br>
+<br>
+
+{#<h1>PROFILE DETAILS</h1>#}
+
+ <div class="col-sm-4 ">
+        <div class="panel panel-danger">
+            <div class="panel-heading">Accident Details</div>
+            <table class="table">
+            <tr>
+                <td>Team Incharge</td>
+                 <td>
+                            <input id="id_team_incharge" class="form-control" maxlength="100" name="team_incharge" type="text" value="{{instance.team_incharge}}" readonly>
+                 </td>
+            </tr>
+            <tr>
+                <td>Name of Victim</td>
+                 <td>
+                            <input id="id_name_of_victim" class="form-control" maxlength="100" name="name_of_victim" type="text" value="{{instance.name_of_victim}}" readonly>
+                 </td>
+            </tr>
+             <tr>
+                <td>Address</td>
+                 <td>
+                            <input id="id_address" class="form-control" maxlength="100" name="address" type="text" value="{{instance.address}}" readonly>
+                 </td>
+            </tr>
+
+             <tr>
+                <td>Age</td>
+                 <td>
+                            <input id="id_age" class="form-control" maxlength="100" name="age" type="text" value="{{instance.age}}" readonly>
+                 </td>
+            </tr>
+             <tr>
+                <td>Place of Accident</td>
+                 <td>
+                            <input id="id_place" class="form-control" maxlength="100" name="place" type="text" value="{{instance.place}}" readonly>
+                 </td>
+             </tr>
+             <tr>
+                <td>Type of Accident</td>
+                 <td>
+                            <input id="id_accident_type" class="form-control" maxlength="100" name="accident_type" type="text" value="{{instance.accident_type}}" readonly>
+                 </td>
+             </tr>
+             <tr>
+                <td>Date Happened</td>
+                 <td>
+                            <input id="id_date" class="form-control" maxlength="100" name="date" type="text" value="{{instance.date}}" readonly>
+                 </td>
+             </tr>
+             <tr>
+                <td>Time Happened</td>
+                 <td>
+                            <input id="id_time" class="form-control" maxlength="100" name="time" type="text" value="{{instance.time}}" readonly>
+                 </td>
+             </tr>
+
+
+
+            </table>
+        </div>
+ </div>
+
+<div class="col-sm-4 ">
+        <div class="panel panel-danger">
+            <div class="panel-heading">Photo 1</div>
+            <table class="table">
+           <tr>
+                   {% if instance.victims_image %}
+                   <img src="{{instance.victims_image.url}}" height="400" width="400">
+                   {% endif %}
+
+           </tr>
+
+
+           </table>
+        </div>
+ </div>
+
+<div class="col-sm-4 ">
+        <div class="panel panel-danger">
+            <div class="panel-heading">Photo 2</div>
+            <table class="table">
+           <tr>
+
+                   {% if instance.victims2_image %}
+                   <img src="{{instance.victims2_image.url}}" height="400" width="400">
+                   {% endif %}
+           </tr>
+
+
+           </table>
+        </div>
+ </div>
+
+<div class="col-sm-4 ">
+    <td><a class="btn btn-md btn-info" role="button" href="{% url 'profiler:accident_list'%}">Back to List</a></td>
+</div>
+
+
+</body>
+</html>
+
+
+{% endblock content %}

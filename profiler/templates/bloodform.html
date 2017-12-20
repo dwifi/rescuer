@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+  {% block title%}
+ {{varTitle}}
+  {%endblock title%}
+
+{% block content %}
+
+
+
+</br>
+</br>
+</br>
+</br>
+
+<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+
+     <div class="col-sm-5 col-sm-offset-2">
+        <div class="panel panel-danger">
+            <div class="panel-heading">blood form</div>
+            <table class="table">
+                <!-- TABLE -->
+                <td>
+
+
+                    <tr>
+                        <td>code</td>
+                        <td>
+                            <input id="id_code" class="form-control" maxlength="100" name="code" type="text" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Blood Type</td>
+                        <td>
+                            <input id="id_type" class="form-control" maxlength="100" name="type" type="text" >
+                        </td>
+                    </tr>
+
+
+
+                </td>
+            </table>
+        </div>
+     </div>
+
+
+<div class="c
+
+    <div class="col-sm-4 col-sm-offset-1">
+                <td><input type="submit" class="btn btn-danger" value="Save Record" /></td>
+{#                <td><a class="btn btn-md btn-info" role="button" href="{% url 'profiler:bloodform_list'%}">View List</a></td>#}
+    </div>
+
+
+
+                <!--<a href="http://127.0.0.1:8000/marriage/profilelist/">Go to List</a> |-->
+                <!--<a href="http://127.0.0.1:8000/marriage/createprofiles/">New Record</a>-->
+            </table>
+
+        </div>
+    </div>
+</form>
+
+
+{% load staticfiles %}
+
+<input type="hidden" value="{{ count }}" id="reccount">
+
+    <script>
+
+//      getting date on EDITNG
+                if ($('#dummy_date').val() != "") {
+                    var dt = new Date($('#dummy_date').val());
+                    $("#id_date").val(getDate(dt));
+                };
+
+
+                function getDate(dt) {
+                    var eval_date = ""
+                    currYear = dt.getFullYear().toString();
+                    currMonth = (dt.getMonth() + 1).toString();
+                    currDate = dt.getDate().toString();
+                    eval_date = currYear + '-'+ datepadding(currMonth) + '-' + datepadding(currDate);
+                    return eval_date;
+                }
+
+                function datepadding(paramString) {
+                    var eval_string = "";
+                    if (parseInt(paramString) <= 9){
+                        eval_string = "0"+ paramString;
+                    }else{
+                        eval_string = paramString;
+                    };
+                    return eval_string;
+                };
+
+
+
+
+{% load staticfiles %}
+<script src="{% static 'js/jquery3.1.1.js'%}"></script>
+{% endblock content %}

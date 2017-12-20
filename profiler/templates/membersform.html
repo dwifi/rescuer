@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+
+  {% block title%}
+ {{varTitle}}
+  {%endblock title%}
+
+{% block content %}
+{% include 'modal.html' %}
+<!-- code for including modal.html -->
+
+</br>
+</br>
+</br>
+</br>
+
+
+
+<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+
+     <div class="col-sm-10 col-sm-offset-1">
+        <div class="panel panel-success">
+            <div class="panel-heading">FULL NAME</div>
+            <table class="table">
+                <!-- TABLE -->
+                <td>
+
+                    {% if instance.members_image %}
+                        <tr>
+                            <td>Current Image</td>
+                            <td><div class="alert alert-danger col-md-12" role="alert" >
+                                <a href="#" data-toggle="modal" data-target="#id_members" role="button" id="preview_image">
+                                    {{ instance.members_image }}
+                                </a>
+                                </div>
+                            </td>
+                        </tr>
+
+                    {% endif %}
+
+                    <tr>
+                    {% if instance.members_image %}
+                    <td>Change Image</td>
+
+                    {% else %}
+                        <td>Upload Image </td>
+                    {% endif %}
+                    <td><input id="id_members_image"  name="members_image" type="file"></td>
+                    </tr>
+
+
+                    <!--<tr>-->
+                        <!--<td>First Name</td>-->
+                        <!--<td>Last Name</td>-->
+                        <!--<td>midlename</td>-->
+                    <!--</tr>-->
+
+                    <tr>   <!--   <td><a>{{ varform.firstname }} </a></td>   -->
+                        <td>
+                            <input id="id_firstname" class="form-control" maxlength="100" name="firstname" type="text" required="" placeholder=" Firstname" value="{{instance.firstname}}">
+                        </td>
+
+                        <td>
+                            <input id="id_lastname" class="form-control" maxlength="100" name="lastname" type="text" required="" placeholder=" Lastname" value="{{instance.lastname}}">
+                        </td>
+
+                        <td>
+                            <input id="id_midname" class="form-control" maxlength="100" name="midname" type="text" required="" placeholder=" midname" value="{{instance.midname}}">
+                        </td>
+
+                    </tr>
+
+                </td>
+            </table>
+        </div>
+     </div>
+
+
+<div class="col-sm-5 col-sm-offset-1">
+        <div class="panel panel-success">
+            <div class="panel-heading">INFO</div>
+            <table class="table">
+                <!-- TABLE -->
+                <td>
+
+                    <tr>
+                        <td>Adress</td>
+                        <td>
+                            <input id="id_barangay" class="form-control" maxlength="100" name="barangay" type="text" value="{{instance.barangay}}">
+                        </td>
+                        <!--<td><a>{{ varform.barangay }}</a></td>-->
+                    </tr>
+
+                    <tr>
+                        <td>birthdate</td>
+
+                        <td>
+                            <input id="id_birtdate" class="form-control" name="birthdate" type="date" value="{{instance.birthdate}}">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Age</td>
+                        <td>
+                            <input id="id_age" class="form-control" maxlength="100" name="age" type="text" value="{{instance.age}}" >
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>religion</td>
+                        <td>
+                            <input id="id_religion"  class="form-control" maxlength="100" name="religion" type="text" value="{{instance.religion}}" >
+                        </td>
+
+                    </tr>
+
+                </td>
+            </table>
+        </div>
+</div>
+
+<tr>
+<div class="col-sm-4 col-sm-offset-1">
+        <div class="panel panel-success">
+            <div class="panel-heading">INFO</div>
+            <table class="table">
+                <!-- TABLE -->
+                <td>
+
+                    <tr>
+                        <td>civilstatus</td>
+                        <td>
+                            <input id="id_civilstatus" class="form-control" maxlength="100" name="civilstatus" type="text" value="{{instance.civilstatus}}" >
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>blood type</td>
+                        <td>
+                            <select id="id_bloodtype" name="bloodtype" class="form-control"  value="">
+                                {% if flag %}
+                                         <option value="{{ instance.bloodtype_id }}"> {{ instance.bloodtype }}</option>
+                                    {% else %}
+                                         <option value="-1">Select blood type</option>
+                                    {% endif %}
+
+
+                                 {% for list in blood_list %}
+                                                <option value="{{ list.pk }}"> {{ list.type }}</option>
+                                            {% endfor %}
+
+
+
+                            </select>
+
+
+
+                    </tr>
+
+                    <tr>
+                        <td>mobile</td>
+                        <td>
+                            <input id="id_mobile" class="form-control" maxlength="100" name="mobile" type="text" value="{{instance.mobile}}" >
+                        </td>
+                        <!--<td><a>{{ varform.mobile}}</a></td>-->
+
+                    </tr>
+                    <tr>
+                        <td>team joined</td>
+                        <td>
+                            <select id="id_team" name="team" class="form-control" value="" type="text" class="form-control" >
+                                 {% if flag %}
+                                         <option value="{{ instance.team_id }}"> {{ instance.team }}</option>
+                                    {% else %}
+                                         <option value="-1">Select team</option>
+                                    {% endif %}
+
+
+                                 {% for list in team_list %}
+                                                <option value="{{ list.pk }}"> {{ list.name }}</option>
+                                            {% endfor %}
+
+                            </select>
+                        </td>
+                        <!--<td><a>{{ varform.team}}</a></td>-->
+                    </tr>
+                </td>
+
+            </table>
+
+        </div>
+    </div>
+</tr>
+
+
+    <div class="col-sm-4 col-sm-offset-1">
+                <td><input type="submit" class="btn btn-success" value="Save Record" /></td>
+                <td><a class="btn btn-md btn-info" role="button" href="{% url 'profiler:memform_list'%}">View List</a></td>
+    </div>
+
+
+
+                <!--<a href="http://127.0.0.1:8000/marriage/profilelist/">Go to List</a> |-->
+                <!--<a href="http://127.0.0.1:8000/marriage/createprofiles/">New Record</a>-->
+            </table>
+
+        </div>
+    </div>
+</form>
+
+
+
+
+{% endblock content %}

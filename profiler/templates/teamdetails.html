@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+
+</head>
+<body>
+<br>
+<br>
+<br>
+
+<h1>PROFILE DETAILS</h1>
+
+
+<h4>code {{ form.code }} </h4>
+<h4>Name {{ form.name}}</h4>
+
+
+
+
+
+
+<!-- delete code-->
+<form method="POST" action="{% url 'profiler:memform_delete' instance.pk %}" encrype="multipart/form-data">{% csrf_token %}
+                    <div class="col-sm-12 ">
+                        <input type="submit" class="btn btn-danger" value="Delete" />
+                    </div>
+
+</form>
+<!--delete code end-->
+
+
+<a href="{% url 'profiler:memform_update' instance.pk %}">EditUpdate</a> |
+
+
+</body>
+</html>
+
+
+{% endblock content %}

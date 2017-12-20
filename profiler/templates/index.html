@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+  {% block title%}
+    {{varTitle}}
+  {%endblock title%}
+
+
+
+{% block content %}
+
+{% load staticfiles %}
+
+{% include 'sidebar.html' %}
+
+    <div class="jumbotron">
+
+{#{% include 'slideshow.html' %}#}
+
+
+
+
+<center> <h2> Rescue 819 Profiling Beta v.2</h2>
+         <p>Quezon,A Safe and Disaster Resilient Community</p>
+</center>
+
+                <div class="container">
+              <div class="col-md-3 col-sm-offset-1">
+                 <div class=""> <img width=900 height="500" src='{% static "image/rescue.jpg" %}'  /></div>
+                 <div class="">
+
+                 </div>
+              </div>
+                </div>
+{#        {% include 'slightbox.html' %}#}
+
+{#               <div class="col-sm-0 col-sm-offset-9 ">#}
+{#                 <div class=""> <img width="200" height="200" src='{% static "img/search.png" %}'  /></div>#}
+{#                 <div class="">e-Voucher Tracking System brings you </br>#}
+{#                              the easy way to track voucher and payroll</br>#}
+{#                                through very simple interface.#}
+{#                 </div>#}
+{#              </div>#}
+
+
+                </div>
+
+                    <!--<td>-->
+                            <!--<img width=300 height="600" src='{% static "img/lgu_quezon.jpg" %}'  />-->
+                    <!--</td>-->
+
+    </div>
+
+
+    </tr>
+    </div>
+
+
+
+
+
+</br>
+</br>
+</br>
+
+
+<!--FOOTER HERE -->
+
+<footer id="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+   <div class="container">
+      <div class="col-md-3 company-details">
+         <div class="icon-top red-text"> <img  src='{% static "img/logo_icon/gpslogo.png" %}'  /></div>
+         <div class="zerif-footer-address">Local Government of Quezon<br>
+            (Municipal Building)<br>
+            Brgy. Samonte, Quezon Isabela<br>
+            Philippines
+         </div>
+      </div>
+      <div class="col-md-3 company-details">
+         <div class="icon-top green-text"><img  src='{% static "img/logo_icon/envelopeblue.png" %}'  /></div>
+         <div class="zerif-footer-email"><a href=" ">lgu_quezonisabela@yahoo.com</a></div>
+      </div>
+      <div class="col-md-3 company-details">
+         <div class="icon-top blue-text"><img  src='{% static "img/logo_icon/telephone-blue.png" %}'  /></div>
+         <div class="zerif-footer-phone">contact us:
+            (+63)9065930674
+         </div>
+      </div>
+      <div class="col-md-3 copyright">
+         <ul class="social">
+            <li><a target="_blank" href=""><i class="fa fa-facebook"></i></a></li>
+            <li><a target="_blank" href=""><i class="fa fa-twitter"></i></a></li>
+            <li><a target="_blank" href=""><i class="fa fa-linkedin"></i></a></li>
+            <li><a target="_blank" href=""><i class="fa fa-instagram"></i></a></li>
+         </ul>
+         <p id="zerif-copyright">Copyright 2017<br> LGU IT_TEAM. @ All Rights Reserved.</p>
+      </div>
+   </div>
+</footer>
+<!--FOOTER END-->
+
+
+
+
+{% endblock content %}
+
+
+

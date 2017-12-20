@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+
+</head>
+<body>
+<br>
+<br>
+<br>
+
+{#<h1>PROFILE DETAILS</h1>#}
+
+ <div class="col-sm-4 ">
+        <div class="panel panel-danger">
+            <div class="panel-heading">pROFILE Details</div>
+            <table class="table">
+            <tr>
+                <td>First Name</td>
+                 <td>
+                            <input id="id_firstname" class="form-control" maxlength="100" name="firstname" type="text" value="{{instance.firstname}}" readonly>
+                 </td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                 <td>
+                            <input id="id_lastname" class="form-control" maxlength="100" name="lastname" type="text" value="{{instance.lastname}}" readonly>
+                 </td>
+            </tr>
+             <tr>
+                <td>Middle Name</td>
+                 <td>
+                            <input id="id_midname" class="form-control" maxlength="100" name="midname" type="text" value="{{instance.midname}}" readonly>
+                 </td>
+            </tr>
+
+             <tr>
+                <td>Barangay</td>
+                 <td>
+                            <input id="id_barangay" class="form-control" maxlength="100" name="barangay" type="text" value="{{instance.barangay}}" readonly>
+                 </td>
+            </tr>
+             <tr>
+                <td>Birthdate</td>
+                 <td>
+                            <input id="id_birthdate" class="form-control" maxlength="100" name="birthdate" type="text" value="{{instance.birthdate}}" readonly>
+                 </td>
+             </tr>
+             <tr>
+                <td>Age</td>
+                 <td>
+                            <input id="id_age" class="form-control" maxlength="100" name="age" type="text" value="{{instance.age}}" readonly>
+                 </td>
+             </tr>
+             <tr>
+                <td>Mobile Number</td>
+                 <td>
+                            <input id="id_mobile" class="form-control" maxlength="100" name="mobile" type="text" value="{{instance.mobile}}" readonly>
+                 </td>
+             </tr>
+             <tr>
+                <td>Team</td>
+                 <td>
+                            <input id="id_team" class="form-control" maxlength="100" name="team" type="text" value="{{instance.team}}" readonly>
+                 </td>
+             </tr>
+             <tr>
+                <td>Birthdate</td>
+                 <td>
+                            <input id="id_birthdate" class="form-control" maxlength="100" name="birthdate" type="text" value="{{instance.birthdate}}" readonly>
+                 </td>
+             </tr>
+             <tr>
+                <td>Bloodtype</td>
+                 <td>
+                            <input id="id_bloodtype" class="form-control" maxlength="100" name="bloodtype" type="text" value="{{instance.bloodtype}}" readonly>
+                 </td>
+             </tr>
+             <tr>
+                <td>Civil Status</td>
+                 <td>
+                            <input id="id_civilstatus" class="form-control" maxlength="100" name="civilstatus" type="text" value="{{instance.civilstatus}}" readonly>
+                 </td>
+             </tr>
+             <tr>
+                <td>Religion</td>
+                 <td>
+                            <input id="id_religion" class="form-control" maxlength="100" name="religion" type="text" value="{{instance.religion}}" readonly>
+                 </td>
+             </tr>
+                </td>
+
+
+
+            </table>
+        </div>
+ </div>
+
+<div class="col-sm-5 ">
+        <div class="panel panel-danger">
+            <div class="panel-heading">pROFILE Picture</div>
+            <table class="table">
+           <tr>
+                   {% if instance.members_image %}
+                   <img src="{{instance.members_image.url}}" height="500" width="500">
+                   {% endif %}
+           </tr>
+
+
+           </table>
+        </div>
+ </div>
+
+<!-- delete code-->
+<form method="POST" action="{% url 'profiler:memform_delete' instance.pk %}" encrype="multipart/form-data">{% csrf_token %}
+                    <div class="col-sm-12 ">
+                        <input type="submit" class="btn btn-danger" value="Delete" />
+                    </div>
+
+</form>
+<!--delete code end-->
+
+
+</body>
+</html>
+
+
+{% endblock content %}

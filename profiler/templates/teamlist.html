@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+
+ {% block header1 %}
+         {% load staticfiles %}
+            <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.dataTables.min.css' %}" >
+            <script src="{% static 'js/jquerytables.min.js'%}"></script>
+            <script src="{% static 'js/jquery.dataTables.min.js'%}"></script>
+
+            <script>
+                 $(document).ready(function() {
+                     $('#id-table').DataTable();
+                 });
+            </script>
+
+    {% endblock header1 %}
+
+{% block content %}
+
+</br>
+</br>
+</br>
+</br>
+
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <div class="row">
+<!--DATA TABLES FOR DETAILS-->
+    <div class="row">
+        <div class="container-fluid">
+            <div class="col-sm-6 col-sm-offset-3">
+                <table id="id-table" class="display" cellspacing="0" width="100%" style="font-size:85%;">
+                <thead>
+                    <tr>
+                        <th>code</th>
+                        <th>name</th>
+                        <th>action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                     {% for list in query_list %}
+                        <tr>
+
+                                <td><a href="{{ list.get_absolute_url }}">{{ list.code }}</a></td>
+                                <td><a href="{{ list.get_absolute_url }}">{{ list.name}}</a></td>
+
+
+                                 <td>
+                                    <a id="id-{{ list.pk }}" href="#" title="Delete Record"   onclick=confirmdelete("{{ list.pk }}")><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                                    </a>|<a id="edit-{{ list.pk }}" href="#" title="Edit Record" onclick=edit_record("{{ list.pk }}") >
+                                         <i class='fa fa-pencil-square-o fa-lg' aria-hidden='true' ></i>
+                                    </a>
+
+                                       <input type="hidden" value="{% url 'profiler:team_delete' list.pk %}" id="pk-{{ list.pk }}">
+                                       <input type="hidden" value="{% url 'profiler:team_update' list.pk %}" id="update-{{ list.pk }}">
+
+                                </td>
+
+                        </tr>
+                     {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+<!--end datatbles-->
+
+
+
+
+{% load staticfiles %}
+
+<input type="hidden" value="{{ count }}" id="reccount">
+
+    <script>
+     $(document).ready(function () {
+      $(".nav li").removeClass("active");
+      $('#list').addClass('active');
+    });
+
+
+ // for deleting record
+   function confirmdelete(param_id){
+       if(confirm("Are your sure to delete this record?")== true){
+          var del_link = $('#pk-'+ param_id).val();
+           $('#id-'+ param_id).prop('href', del_link);
+       }else{
+          return false;
+       };
+    };
+//
+//Editing records
+    function edit_record(param_id) {
+        var edit_link = $('#update-'+ param_id).val();
+         $('#edit-'+ param_id).prop('href', edit_link);
+    };
+
+//  Viewing Posted Records
+     function view_record(param_id) {
+        var posted_link = $('#posted-'+ param_id).val();
+         $('#list-'+ param_id).prop('href', posted_link);
+    };
+
+</script>
+
+
+
+
+{% endblock content %}

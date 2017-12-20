@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+
+</head>
+<body>
+<br>
+<br>
+<br>
+
+<table border="2"
+       class="table">                                <!-- TABLE -->
+        <tr>
+            <td>name</td>
+            <td>type</td>
+
+
+
+        </tr>
+        {% for list in query_list %}
+                <tr>
+                    <td><a href="{{ list.get_absolute_url }}">{{ list.name}}</a></td>
+                    <td><a href="{{ list.get_absolute_url }}">{{ list.type}}</a></td>
+
+                </tr>
+        {% endfor %}
+
+    </table>                            <!-- table end-->
+        <h1> TOTAL = {{count}}</h1>  <!-- CODE FOR TOTAL con. view.py-->
+
+
+
+
+</body>
+</html>
+
+
+{% endblock content %}

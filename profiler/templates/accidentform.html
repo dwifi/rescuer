@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+  {% block title%}
+ {{varTitle}}
+  {%endblock title%}
+
+{% block content %}
+{% include 'modal.html' %}
+<!-- code for including modal.html -->
+
+
+</br>
+</br>
+</br>
+</br>
+
+<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+
+     <div class="col-sm-5 col-sm-offset-2">
+        <div class="panel panel-success">
+            <div class="panel-heading">accident form</div>
+            <table class="table">
+                <!-- TABLE -->
+                <td>
+
+                    <tr>
+                        <td>team_incharge</td>
+                        <td>
+{#                            <input id="id_team_incharge" class="form-control" maxlength="100" name="team_incharge" type="text" value="{{instance.team_incharge}}">#}
+{#                        </td>#}
+                              <select id="id_team_incharge" name="team_incharge" class="form-control"  value="">
+                                {% if flag %}
+                                         <option value="{{ instance.team_incharge_id }}"> {{ instance.team_incharge }}</option>
+                                    {% else %}
+                                         <option value="-1">Select team</option>
+                                    {% endif %}
+
+
+                                 {% for list in team_list %}
+                                                <option value="{{ list.pk }}"> {{ list.name }}</option>
+                                            {% endfor %}
+
+
+
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>name of victim</td>
+                        <td>
+                            <input id="id_name_of_victim" class="form-control" maxlength="100" name="name_of_victim" type="text" value="{{instance.name_of_victim}}" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>address</td>
+                        <td>
+                            <input id="id_address" class="form-control" maxlength="100" name="address" type="text" value="{{instance.address}}" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>age</td>
+                        <td>
+                            <input id="id_age" class="form-control" maxlength="100" name="age" type="text" value="{{instance.age}}" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>place of accident</td>
+                        <td>
+                            <input id="id_place" class="form-control" maxlength="100" name="place" type="text" value="{{instance.place}}" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>type of accident</td>
+                        <td>
+                            <input id="id_accident_type" class="form-control" maxlength="100" name="accident_type" type="text" value="{{instance.accident_type}}" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>date of accident</td>
+                        <td>
+                            <input id="id_date" class="form-control" maxlength="100" name="date" type="date" value="{{instance.date}}" >
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>time of accident</td>
+                        <td>
+                            <input id="id_time" class="form-control" maxlength="100" name="time" type="text" required="" placeholder=" Estimated time eg. (9:35 am)"value="{{instance.time}}" >
+                        </td>
+                    </tr>
+
+
+                        {% if instance.victims_image %}
+                            <tr>
+                                <td>Current Image</td>
+                                <td><div class="alert alert-danger col-md-12" role="alert" >
+                                    <a href="#" data-toggle="modal" data-target="#id_victims" role="button" id="preview_image">
+                                        {{ instance.victims_image }}
+                                    </a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        {% endif %}
+
+                        <tr>
+                        {% if instance.victims_image %}
+                        <td>Change Image</td>
+
+                        {% else %}
+                            <td>Upload Image 1</td>
+                        {% endif %}
+                        <td><input id="id_victims_image"  name="victims_image" type="file"></td>
+                        </tr>
+
+
+
+
+
+                </td>
+            </table>
+        </div>
+     </div>
+
+
+
+
+    <div class="col-sm-5 col-sm-offset-2">
+                <td><input type="submit" class="btn btn-success" value="Save Record" /></td>
+{#                <td><a class="btn btn-md btn-info" role="button" href="{% url 'profiler:bloodform_list'%}">View List</a></td>#}
+    </div>
+
+
+
+                <!--<a href="http://127.0.0.1:8000/marriage/profilelist/">Go to List</a> |-->
+                <!--<a href="http://127.0.0.1:8000/marriage/createprofiles/">New Record</a>-->
+            </table>
+
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+{% load staticfiles %}
+<script src="{% static 'js/jquery3.1.1.js'%}"></script>
+{% endblock content %}

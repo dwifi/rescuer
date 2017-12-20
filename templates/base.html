@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+
+        {% block title %}
+
+        {% endblock title %}
+    </title>
+    {% load staticfiles %}
+
+     <script src= "{% static 'js/jquery3.1.1.js' %}"></script>
+     <script src= "{% static 'bootstrap/js/bootstrap.js' %}"></script>
+     <link href="{% static 'navbar/css/bootstrap.min.css' %}" rel="stylesheet">
+     <!--Font Awesome-->
+     <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+     <!--Local CSS-->
+     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" >
+
+
+    {% block header1 %}
+
+    {% endblock header1 %}
+
+
+
+
+
+
+</head>
+<body>
+
+
+ <!--<body background="/static/image/cloud.jpg" >    &lt;!&ndash; code for background image-->
+    {% include 'navbar.html' %}
+
+    {% block content %}
+
+    {% endblock content %}
+
+    {% block styles %}
+    {% endblock styles %}
+
+  </body>
+</html>

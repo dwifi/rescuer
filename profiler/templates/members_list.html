@@ -1,0 +1,161 @@
+
+{% extends 'base.html' %}
+
+ {% block title%}
+profile list
+  {%endblock title%}
+
+
+{% block content %}
+
+
+
+</br>
+</br>
+</br>
+</br>
+
+
+
+
+<div class="container">
+{% for list in query_list %}
+<br>
+
+
+<div class="col-sm-6 col-sm-offset-3">
+        <div class="panel panel-success">
+            <div class="panel-heading">INFO</div>
+            <table class="table">
+
+                {% if list.members_image %}
+            <!-- round image -->
+            <head>
+            <style>
+            img {
+              border-radius: 50%;
+            }
+            </style>
+            </head>
+            <body>
+
+            <img src="{{ list.members_image.url }}" alt="Avatar" style="width:500px" height="450 ">
+
+            </body>
+            <!-- end round image -->
+
+
+
+
+{#				<tr>#}
+{#					<td><img src="{{ list.members_image.url }}" width="350" height="450" /></td>#}
+{##}
+{#				</tr>#}
+
+
+				<div class="caption">
+				<tr>
+					<td><h4><a href="{{ list.get_absolute_url }}">{{ list.lastname }}, {{list.firstname}} {{list.midname}}. </a></h4></td>
+
+                </tr>
+				<tr>
+
+				    <td><h6> TEAM {{ list.team }} </h6></td>
+				</tr>
+                </div>
+			</table>
+
+			{% endif %}
+				<p>
+					<a class="btn btn-md btn-success"
+					href=" {% url 'profiler:memform_update' list.pk %}"
+					id="id_update" role="button" > EDIT/UPDATE </a>
+				</p>
+        </div>
+    </div>
+{% endfor %}
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+{#{% extends 'base.html' %}#}
+{##}
+{# {% block content %}#}
+{##}
+{##}
+{#</head>#}
+{#<body>#}
+{#<br>#}
+{#<br>#}
+{#<br>#}
+{##}
+{#<table border="2"#}
+{#       class="table">                                <!-- TABLE -->#}
+{#        <tr>#}
+{#              {% if list.members_image %}#}
+{#			<table>#}
+{#				<tr>#}
+{#					<td><img src="{{ list.members_image.url }}" width="350" height="450" /></td>#}
+{##}
+{##}
+{#				</tr>#}
+{#				<div class="caption">#}
+{#				<tr>#}
+{#					<td><h3><a href="{{ list.get_absolute_url }}">{{ list.lastname }}, {{list.firstname}} {{list.middname}} </a></h3></td>#}
+{#					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>#}
+{##}
+{##}
+{#				<div>#}
+{#			</table>#}
+{#			{% endif %}#}
+{#            <td>Fname</td>#}
+{#            <td>Lname</td>#}
+{#            <td>middle</td>#}
+{#            <td>birthdate</td>#}
+{#            <td>barangay</td>#}
+{#            <td>Age</td>#}
+{#            <td>mobile number</td>#}
+{#            <td>Bloodtype</td>#}
+{#            <td>Civilstatus</td>#}
+{#            <td>Religion</td>#}
+{#            <td>Team</td>#}
+{##}
+{##}
+{#        </tr>#}
+{#        {% for list in query_list %}#}
+{##}
+{#                <tr>#}
+{#                    <td><a href="{{ list.get_absolute_url }}">{{ list.firstname}}</a></td>#}
+{#                    <td><a href="{{ list.get_absolute_url }}">{{ list.lastname}}</a></td>#}
+{#                    <td><a href="{{ list.get_absolute_url }}">{{ list.middlename}}</a></td>#}
+{#                    <td><a href="{{ list.get_absolute_url }}">{{ list.birthdate}}</a></td>#}
+{#                    <td><a href="{{ list.get_absolute_url }}">{{ list.barangay}}</a></td>#}
+{#                    <td><a href="{{ list.get_absolute_url }}">{{ list.age}}</a></td>#}
+{#                    <td><a href="{{ list.get_absolute_url }}">{{ list.mobile}}</a></td>#}
+{#                    <td><a href="{{ list.get_absolute_url }}">{{ list.bloodtype}}</a></td>#}
+{#                    <td><a href="{{ list.get_absolute_url }}">{{ list.civilstatus}}</a></td>#}
+{#                    <td><a href="{{ list.get_absolute_url }}">{{ list.religion}}</a></td>#}
+{#                    <td><a href="{{ list.get_absolute_url }}">{{ list.team}}</a></td>#}
+{##}
+{#                </tr>#}
+{#        {% endfor %}#}
+{##}
+{#    </table>                            <!-- table end-->#}
+{#        <h1> TOTAL = {{count}}</h1>  <!-- CODE FOR TOTAL con. view.py-->#}
+{##}
+{##}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{##}
+{##}
+{#{% endblock content %}#}
